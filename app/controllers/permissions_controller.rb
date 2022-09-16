@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class PermissionsController < ApplicationController
   before_action :find_permission, only: %i[show edit update destroy]
 
   def index
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   private
 
   def find_permission
-    @permission = User.find(params[:id])
+    @permission = Permission.find(params[:id])
   end
 
   def permitted_params

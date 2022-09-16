@@ -4,7 +4,8 @@ class User < ApplicationRecord
             :username,
             :password,
             :email,
-            :status
+            :status,
+            presence: true
             
   enum status: { status_1: 'status_1', status_2: 'status_2' }
 end
