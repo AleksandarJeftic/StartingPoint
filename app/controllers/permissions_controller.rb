@@ -13,7 +13,7 @@ class PermissionsController < ApplicationController
   end
 
   def create
-    @permission = permission.new(permitted_params)
+    @permission = Permission.new(permitted_params)
     if @permission.save
       redirect_to permissions_path, notice: 'Permission successfully created.'
     else

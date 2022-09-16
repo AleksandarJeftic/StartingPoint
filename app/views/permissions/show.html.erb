@@ -1,0 +1,17 @@
+<div class="container mt-2">
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Back', permissions_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="row mb-2">
+    <div class="d-flex justify-content-center">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <%= @permission.code %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Description: <%= @permission.description %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

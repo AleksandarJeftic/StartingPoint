@@ -1,0 +1,35 @@
+<div class='container w-50'>
+    <div class="d-flex justify-content-end mt-2 mb-2">
+      <% if @permissions.present? %>
+        <%= link_to 'Create Permission', new_permission_path, class: 'btn btn-success' %>
+      <% end %>
+      <%= link_to 'Back', users_path, class: 'btn btn-primary ms-1' %>
+    </div>
+  <table class='table table-hover mt-2 border'>
+    <thead class="table-primary">
+      <tr>
+        <th>Code</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @permissions.present? %>
+        <% @permissions.each do |permission| %>
+          <tr>
+            <td><%= permission.code %></td>
+            <td><%= permission.description %></td>
+            <%= render 'table_action_buttons', resource: permission  %>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td class='text-center' colspan='6'>
+            <p>There are no permissions yet. Feel free to create one... </p>
+            <%= link_to 'Create Permission', new_permission_path, class: 'btn btn-success' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

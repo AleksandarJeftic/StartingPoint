@@ -1,0 +1,30 @@
+<div class='container w-50 mt-4'>
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Back', permissions_path, class: 'btn btn-primary mb-2' %>
+  </div>
+  <%= form_for @permission do |f| %>
+    <%= render "shared/form_errors", object: @permission %>
+    <div class="row mb-3">
+      <div class="col">
+        <div>
+          <%= f.label :code, class: 'form-label' %>
+          <%= f.text_field :code, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <div>
+          <%= f.label :description, class: 'form-label' %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <% submit_text = %w[edit update].include?(action_name) ? 'Update Permission' : 'Create Permission' %>
+    <div class="row text-center">
+      <div>
+        <%= f.submit submit_text, class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+</div>

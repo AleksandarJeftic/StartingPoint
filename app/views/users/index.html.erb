@@ -1,6 +1,7 @@
 <div class='container'>
   <% if @users.present? %>
     <div class="d-flex justify-content-end mt-2 mb-2">
+      <%= link_to 'Menage Permissions', permissions_path, class: 'btn btn-primary me-1' %>
       <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
     </div>
   <% end %>
