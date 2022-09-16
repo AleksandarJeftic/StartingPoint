@@ -2,7 +2,7 @@ class PermissionsController < ApplicationController
   before_action :find_permission, only: %i[show edit update destroy]
 
   def index
-    @permissions = Permission.all
+    @permissions = Permission.order(code: :asc).page(params[:page]).per(10)
   end
 
   def show
