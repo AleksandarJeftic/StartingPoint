@@ -1,6 +1,11 @@
 <div class='container'>
-  <div class='table table-responsive table-primary'>
-    <thead>
+  <% if @users.present? %>
+    <div class="d-flex justify-content-end mt-2 mb-2">
+      <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
+    </div>
+  <% end %>
+  <table class='table table-hover mt-2 border'>
+    <thead class="table-primary">
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
@@ -24,10 +29,12 @@
         <% end %>
       <% else %>
         <tr>
-          <p class='text-center'>There are no users ye. Feel free to create one </p>
-          <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
+          <td class='text-center' colspan='6'>
+            <p>There are no users yet. Feel free to create one... </p>
+            <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
+          </td>
         </tr>
       <% end %>
     </tbody>
-  </div>
+  </table>
 </div>

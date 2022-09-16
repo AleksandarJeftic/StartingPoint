@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_09_16_184150) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_permissions_on_code", unique: true
   end
 
   create_table "user_permissions", force: :cascade do |t|
@@ -32,14 +33,15 @@ ActiveRecord::Schema.define(version: 2022_09_16_184150) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "username"
-    t.string "passwrod"
-    t.string "email"
-    t.string "status"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "username", null: false
+    t.string "password", null: false
+    t.string "email", null: false
+    t.string "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "user_permissions", "permissions"

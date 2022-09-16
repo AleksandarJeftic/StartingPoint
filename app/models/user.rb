@@ -6,6 +6,8 @@ class User < ApplicationRecord
             :email,
             :status,
             presence: true
+
+  validates :email, uniqueness: true
             
   enum status: { status_1: 'status_1', status_2: 'status_2' }
 end

@@ -4,6 +4,8 @@ class CreatePermissions < ActiveRecord::Migration[6.1]
       t.integer :code
       t.text :description
 
+      t.index :code, unique: true
+
       t.timestamps
     end
   end
