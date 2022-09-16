@@ -1,0 +1,35 @@
+<div class="container mt-2">
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Back', users_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="row mb-2">
+    <div class="d-flex justify-content-center">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <%= @user.full_name %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">E-mail: <%= @user.email %></li>
+          <li class="list-group-item">Username: <%= @user.username %></li>
+          <li class="list-group-item">Password: <%= @user.password %></li>
+          <li class="list-group-item">Status: <%= @user.status %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <h3>Permissions</h3>
+      <% @user.permissions.each do |permission| %>
+        <div class="card mt-2" style="width: 18rem;">
+          <div class="card-header">
+            <%= permission.code %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Description: <%= permission.description %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

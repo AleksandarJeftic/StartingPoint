@@ -1,4 +1,7 @@
-<div class='container mt-4 w-25'>
+<div class='container w-50 mt-4'>
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Back', users_path, class: 'btn btn-primary mb-2' %>
+  </div>
   <%= form_for @user do |f| %>
     <%= render "shared/form_errors", object: @user %>
     <div class="row mb-3">
