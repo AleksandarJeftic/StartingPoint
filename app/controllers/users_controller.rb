@@ -54,7 +54,8 @@ class UsersController < ApplicationController
       :username,
       :password,
       :email,
-      :status
+      :status,
+      permission_ids: []
     )
   end
   
