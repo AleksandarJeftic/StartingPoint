@@ -1,9 +1,13 @@
 <div class='container'>
-  <% if @users.present? %>
-    <div class="d-flex justify-content-end mt-2 mb-2">
-      <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
-    </div>
-  <% end %>
+  <div class="d-flex justify-content-end mt-2 mb-2">
+    <%= search_form_for @q do |f| %>
+      <div class="d-flex justify-content-end">
+        <%= f.search_field :first_name_or_last_name_or_username_or_password_or_email_or_status_cont, class: 'me-2' %>
+        <%= f.submit 'Search', class: 'btn btn-primary me-2' %>
+      </div>
+    <% end %>
+    <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
+  </div>
   <table class='table table-hover mt-2 border'>
     <thead class="table-primary">
       <tr>
@@ -32,8 +36,7 @@
       <% else %>
         <tr>
           <td class='text-center' colspan='6'>
-            <p>There are no users yet. Feel free to create one... </p>
-            <%= link_to 'Create User', new_user_path, class: 'btn btn-success' %>
+            <p>None of users found.</p>
           </td>
         </tr>
       <% end %>
