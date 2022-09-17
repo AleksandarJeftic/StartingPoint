@@ -11,12 +11,12 @@
   <table class='table table-hover mt-2 border'>
     <thead class="table-primary">
       <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Status</th>
+        <th><%= sort_link(@q, :first_name, 'First Name', default_order: :asc) %></th>
+        <th><%= sort_link(@q, :last_name, 'Last Name', default_order: :asc) %></th>
+        <th><%= sort_link(@q, :email, 'E-mail', default_order: :asc) %></th>
+        <th><%= sort_link(@q, :username, 'Username', default_order: :asc) %></th>
+        <th><%= sort_link(@q, :password, 'Password', default_order: :asc) %></th>
+        <th><%= sort_link(@q, :status, 'Status', default_order: :asc) %></th>
         <th></th>
       </tr>
     </thead>
