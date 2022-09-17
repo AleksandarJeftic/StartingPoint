@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'users#index'
 
-  resources :users
-  resources :permissions
+  resources :users do
+    member do
+      get :edit_user_permissions
+    end
+  end
 end

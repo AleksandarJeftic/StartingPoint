@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :permissions, dependent: :destroy
+  accepts_nested_attributes_for :permissions,
+                                allow_destroy: true,
+                                reject_if: :all_blank
   validates :first_name,
             :last_name,
             :username,
@@ -9,8 +13,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  has_many :user_permissions, dependent: :destroy
-  has_many :permissions, through: :user_permissions, dependent: :destroy
             
   enum status: { status_1: 'status_1', status_2: 'status_2' }
 

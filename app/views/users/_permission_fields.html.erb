@@ -1,0 +1,25 @@
+<div class="nested-fields">
+  <div class="card mt-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <div>
+            <div class="d-flex justify-content-between">
+              <%= f.label :code, class: 'form-label' %>
+              <%= link_to_remove_association "Remove Permission", f , class: 'btn btn-sm btn-danger mb-2' %>
+            </div>
+            <%= f.text_field :code, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div>
+            <%= f.label :description, class: 'form-label' %>
+            <%= f.text_area :description, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

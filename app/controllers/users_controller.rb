@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i[show edit update destroy]
+  before_action :find_user, only: %i[show edit update destroy edit_user_permissions]
 
   def index
     @users = User.order(first_name: :asc, last_name: :asc).page(params[:page]).per(10)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.update(permitted_params)
       redirect_to users_path, notice: 'User successfully updated.'
     else
-      render :edit, alert: 'Something went wrong. Please try again.'
+      render_form_with_errors
     end
   end
 
@@ -41,7 +41,21 @@ class UsersController < ApplicationController
     redirect_to users_path, message
   end
 
+  def edit_user_permissions
+    @user.permissions.build
+  end
+
   private
+
+  def render_form_with_errors
+    message = { alert: 'Something went wrong. Please try again.' }
+    if params[:user][:permissions]
+      render :edit_user_permissions, message
+    else
+      render :edit, message
+    end
+  end
+  
 
   def find_user
     @user = User.find(params[:id])
@@ -55,7 +69,7 @@ class UsersController < ApplicationController
       :password,
       :email,
       :status,
-      permission_ids: []
+      permissions_attributes: [:id, :code, :description, :_destroy]
     )
   end
   

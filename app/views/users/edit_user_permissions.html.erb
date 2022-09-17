@@ -1,0 +1,21 @@
+<div class='container w-50 mt-4'>
+  <div class="d-flex justify-content-between">
+    <h4>Manage User Permissions</h4>
+    <%= link_to 'Back', users_path, class: 'btn btn-primary mb-2' %>
+  </div>
+  <%= form_for @user do |f| %>
+    <%= hidden_field_tag 'user[permissions]', true %>
+    <%= render "shared/form_errors", object: @user %>
+    <%= f.fields_for :permissions do |permission_form| %>
+      <%= render 'permission_fields', f: permission_form %>
+    <% end %>
+    <div class="d-flex justify-content-between">
+      <%= link_to_add_association 'Add Permission', f, :permissions, class: 'btn btn-primary mt-2'  %>
+      <div class="row text-center">
+        <div>
+          <%= f.submit 'Update User', class: 'btn btn-success mt-2' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

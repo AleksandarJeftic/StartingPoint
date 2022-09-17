@@ -4,8 +4,8 @@
   </div>
   <div class="row mb-2">
     <div class="d-flex justify-content-center">
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">
+      <div class="card w-50" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
           <%= @user.full_name %>
         </div>
         <ul class="list-group list-group-flush">
@@ -18,18 +18,24 @@
     </div>
   </div>
   <div class="row">
-    <div class="d-flex justify-content-center">
-      <h3>Permissions</h3>
+    <% if @user.permissions.present? %>
+      <div class="d-flex justify-content-center">
+        <h4>Permissions</h4>
+      </div>
       <% @user.permissions.each do |permission| %>
-        <div class="card mt-2" style="width: 18rem;">
-          <div class="card-header">
-            <%= permission.code %>
+        <div class="row">
+          <div class="d-flex justify-content-center">
+            <div class="card w-50 mt-2" style="width: 18rem;">
+              <div class="card-header bg-primary text-white">
+                Code: <%= permission.code %>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Description: <%= permission.description %></li>
+              </ul>
+            </div>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Description: <%= permission.description %></li>
-          </ul>
         </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
